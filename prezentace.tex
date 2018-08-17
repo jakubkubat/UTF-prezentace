@@ -33,33 +33,56 @@
 % obsah prezentace
 % (používají se klasické sekce)
 
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventSelection.png}
-	\end{figure}
-\end{frame}
 
 \begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventCuts.png}
-	\end{figure}
+  \frametitle{Basic information}
+  \begin{itemize}
+  \item Au+Au 2014 200GeV
+  \item Production: P17 lowmid
+  \item Library SL18b
+  \item Trigger: 450202, 450212
+  \end{itemize}
 \end{frame}
 
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventTrigger.png}
-	\end{figure}
-\end{frame}
 
 \begin{frame}[plain,c]
  	%\frametitle{Event histograms}
  	\begin{center}
  	\Huge Event histograms
  	\end{center}
-	
+\end{frame}
+
+\begin{frame}
+  \frametitle{Preselection histograms}
+  \begin{itemize}
+    \item Fill hEventVzvsVzvpdO, hEventdVzO, hEventVrO, hEventnEmcPidsO
+    \item On next slides are compared with postselected
+    \item Postselected satisfy conditions: SelectEvent is not NULLPTR, number of BEMC pid traits $\geq$ 1
+    \item SelectEvent: Event cuts + trigger selection
+    \item Cuts: $|$vertices' z component$|$ $\leq$ 30, $|$primaryVertex().z() - vzVpd()$|$ $\leq$ 4
+    \item Also tree gets filled in this part of the code - monitored by histograms on the very end of the presentation
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventSelection.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventCuts.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventTrigger.png}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -119,80 +142,30 @@
 \end{frame}
 
 \begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventnTrigTowers.png}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{CorrWeight.png}
 	\end{figure}
 \end{frame}
 
 \begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventnBtowEmc.png}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventNPrimaries.png}
 	\end{figure}
 \end{frame}
 
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventnEmcTracks.png}
-	\end{figure}
-\end{frame}
 
-%\begin{frame}
- %	\begin{figure}[h!]
-	%\centering
-	%\includegraphics[scale=0.4]{EventnBtowTracks.png}
-	%\end{figure}
-%\end{frame}
+
+
 
 \begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventAllTracks.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventTriggerTracks.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{EventTriggerTracksVsAllTracks.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{EventNPrimaries.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
- 	\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.4]{Eta.png}
-	\end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{TrackEtaPhiPtP_projectionY.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{CorrWeight.png}
-  \end{figure}
+  \frametitle{Filling histograms}
+  \begin{itemize}
+    \item Quantify triggers: BEMC Trigger ID vs ADC
+    \item Quantify Barrel towers: BEMC ID vs ADC
+    \item Quantify EmcPIDs: pidAdcO vs ADC, EmcE, EmcE0vE, EmczDistphiDist, EmcTrackIndex
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -245,23 +218,66 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Triggered tower selection}
+	\begin{itemize}
+		\item Triggered tower is chosen if ID of hitted tower matches ID of BEMC trigger
+		\item Selected tracks are matched to triggered towers
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventnTrigTowers.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Electrons selection}
+	\begin{itemize}
+		\item Following histograms check the number of hits in BEMC towers vs STAR clustering algorithm and STAR clustering algorithm vs number of tracks
+		\item Pseudorapidity histogram is filled with primary tracks (pMom $>$ 0) 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventnBtowEmc.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventnEmcTracks.png}
+	\end{figure}
+\end{frame}
+
+%\begin{frame}
+%	\begin{figure}[h!]
+%\centering
+%\includegraphics[scale=0.4]{EventnBtowTracks.png}
+%\end{figure}
+%\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{Eta.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
   \begin{center}
  	\Huge Track histograms
  	\end{center}
 \end{frame}
 
 \begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{TracksSelection.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{TrackEoverpvsp.png}
-  \end{figure}
+  \begin{itemize}
+  \item Following histograms satisfy conditions that BEMC PidTraitsIndex $\geq$ 0 and BEMC PID traits for this index exist
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -297,6 +313,13 @@
   \centering
   \includegraphics[scale=0.4]{TracknSigmaPionvsp_projectionY.png}
   \end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TrackEtaPhiPtP_projectionY.png}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -358,17 +381,52 @@
 \end{frame}
 
 \begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TracknHitsFit.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Following histograms satisfy condition that primary momentum magnitude is $\neq$ 0 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TrackEoverpvsp.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TrackSigmavsEoverp.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Following histograms are filled if BEMC energy $\neq$ 0
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
   \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.4]{TrackE0vE.png}
   \end{figure}
 \end{frame}
 
+
+
 \begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{TracknHitsFit.png}
-  \end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TrackSigmavsE0vE.png}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -376,6 +434,15 @@
   \centering
   \includegraphics[scale=0.4]{TrackDistvE0E.png}
   \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item GetBEMCdist: index of BEMC pid traits $\geq$ 0, btowId of BEMC pid traits $\geq$ 0, deposited energy in 3 tower cluster $\neq$ 0, track projection does exist $\rightarrow$ (etaTrack - etaCluster) and dphi are computed, returns true
+    \item If GetBEMCdist is true, histograms $\eta$ and $\varphi$ distance between track and cluster, TPC-BEMC matching distance R, BEMC distance and BEMC $\varphi$ distance vs $\varphi$ distance between track and cluster are filled
+    \item Histogram Track pMom vs gMom is filled
+    
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -416,20 +483,6 @@
 \begin{frame}
   \begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.4]{TrackSigmavsEoverp.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{TrackSigmavsE0vE.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
   \includegraphics[scale=0.4]{TrackpMomgMom.png}
   \end{figure}
 \end{frame}
@@ -442,22 +495,52 @@
 \end{frame}
 
 \begin{frame}
-  \begin{center}
- 	\Huge Electron histograms
- 	\end{center}
+  \frametitle{Track selection}
+  \begin{itemize}
+  \item Track selection cuts:
+	  \begin{itemize}
+	  	\item HitsFit $\geq$ 20
+	  	\item nHitsFit/nHitsMax $\geq$ 0.52
+	  	\item nHitsDedx() $\geq$ 10
+	  	\item primary $|p|$ $\neq$ 0
+	  	\item -1.5 $\leq$ n$\sigma_e$ $\leq$ 3
+	  	\item primary $|\eta|$ $\leq$ 1
+	  	\item (pidE/pMom().mag() $\geq$ 0.3) and (pidE/pMom().mag() $\leq$ 1.8), where pidE=mPicoDst-$>$bemcPidTraits-$>$e and pMom.mag is primary $|p|$pidE0
+	  	\item pidE $\geq$ 0.1
+	  	\item pMom().mag() $\geq$ 3
+	  \end{itemize}
+  \item DCA cut: helix(mEvent-$>$bField()).distance(primVpos) $\leq$ 1.5 cm
+	  
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{TracksSelection.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\Huge Electron histograms
+	\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Filling electron histograms}
+  \begin{itemize}
+  \item Histograms ElectronPhivdEdx, Electron $p_T$, Electron momentum, Electron z distance vs $\varphi$ distance, Electron Dca are filled
+  \item if pidE $\neq$ 0 Electron BEMC dist vs E0/E is filled
+  \item if GetBEMCdist is true: histograms Electron $\varphi$ dist vs $\eta$ dist, Electron BEMC-TPC metching distance, Electron BEMC dist vs BEMC-TPC matching distance R, Electron $\eta$ dist vs $z$ dist and Electron BEMC $\varphi$ distance vs $\varphi$ distance between track and cluster are filled
+  \item cut: BEMC-TPC distance $\leq$ 0.025
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
   \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.4]{ElectronPhivdEdx.png}
-  \end{figure}
-\end{frame}
-
-\begin{frame}
-  \begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.4]{ElectronTowervp.png}
   \end{figure}
 \end{frame}
 
@@ -532,9 +615,63 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Select trigger electrons}
+  \begin{itemize}
+    \item ID of Barrel tower hit vs Momentum histogram is filled when $|$mPicoDst-$>$bemcPidTraits-$>$e1 - energy of triggered tower$|$  or $|$mPicoDst-$>$bemcPidTraits-$>$e0 - energy of triggered tower$|$ $\leq$ 0.01 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{ElectronTowervp.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{After electrons selection}
+	\begin{itemize}
+		\item Monitor all tracks and triggered tracks 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventAllTracks.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventTriggerTracks.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.4]{EventTriggerTracksVsAllTracks.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
   \begin{center}
  	\Huge Pair histograms
  	\end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Select pair}
+  \begin{itemize}
+    \item Pair Cuts histogram is filled
+    \item Histograms Pair $p_T$, Mother $y$ vs $\eta$ and Pair rapidity are filled
+    \item Histogram Pair $\varphi$ is filled if condition for likely candidates is satisfied: 9$\leq$mass$\leq$11 and charge1*charge2 $<$ 0 
+    \item SelectPair function cuts: mass of mother $\geq$ 0.2, mother's $p_T$ $\leq$ 10, $|\eta|\leq1$, $|p|$ of at least one daughter $\geq$ 4.5
+    \item SelectPair function returns mass od mother
+    \item On next slides some projections are shown
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
